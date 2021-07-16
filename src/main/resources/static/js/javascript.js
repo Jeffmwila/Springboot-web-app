@@ -13,7 +13,7 @@ function login() {
   }
   console.log(info)
 
-  fetch("https://springboot-issue-tracker.herokuapp.com/users/login", {
+  fetch("http://localhost:8080/users/login", {
     method: "post",
     headers: {
       'Accept': 'application/json',
@@ -106,7 +106,7 @@ function registerUser() {
   }
   console.log(info2)
 
-  fetch("https://springboot-issue-tracker.herokuapp.com/users/create", {
+  fetch("http://localhost:8080/users/create", {
     method: "post",
     headers: {
       'Accept': 'application/json',
@@ -158,7 +158,7 @@ function addEquip() {
   var name = document.getElementById('equipmentName').value;
 
 var info;
-  fetch("https://springboot-issue-tracker.herokuapp.com/equips/read")
+  fetch("http://localhost:8080/equips/read")
     .then(response => response.json())
     .then(equips => {
 
@@ -175,7 +175,7 @@ var info;
 
       console.log(info)
 
-      fetch("https://springboot-issue-tracker.herokuapp.com/equips/create", {
+      fetch("http://localhost:8080/equips/create", {
         method: "post",
         headers: {
           'Accept': 'application/json',
@@ -221,7 +221,7 @@ function addIssue() {
   var month = new Date().getMonth().toString();
   var day = new Date().getDate().toString();
 
-  fetch("https://springboot-issue-tracker.herokuapp.com/issues/read")
+  fetch("http://localhost:8080/issues/read")
     .then(response => response.json())
     .then(issues => {
       var issuesId = 0;
@@ -234,7 +234,7 @@ function addIssue() {
       }
 
       console.log(info)
-      fetch("https://springboot-issue-tracker.herokuapp.com/issues/create", {
+      fetch("http://localhost:8080/issues/create", {
         method: "post",
         headers: {
           'Accept': 'application/json',
@@ -261,11 +261,6 @@ function addIssue() {
 
 
 }
-function cancelIssuePost() {
-
-  console.log("reset form")
-
-}
 function getEquips() {
 
 
@@ -279,7 +274,7 @@ function getEquips() {
     login.className="nav-item side-nav-option";
 
   }
-  fetch("https://springboot-issue-tracker.herokuapp.com/equips/read")
+  fetch("http://localhost:8080/equips/read")
     .then(response => response.json())
     .then(data => {
 
@@ -305,11 +300,11 @@ function getIssues() {
 
   var equipment = [];
 
-  fetch("https://springboot-issue-tracker.herokuapp.com/equips/read")
+  fetch("http://localhost:8080/equips/read")
     .then(response => response.json())
     .then(data => {
       equipment = data;
-      fetch("https://springboot-issue-tracker.herokuapp.com/issues/read")
+      fetch("http://localhost:8080/issues/read")
         .then(response => response.json())
         .then(issues => {
 
@@ -369,7 +364,7 @@ function deleteIssue(e) {
 
   console.log(info)
 
-  fetch("https://springboot-issue-tracker.herokuapp.com/issues/delete", {
+  fetch("http://localhost:8080/issues/delete", {
     method: "delete",
     headers: {
       'Accept': 'application/json',
@@ -395,7 +390,7 @@ function deleteEquip(e) {
 
   console.log(info)
 
-  fetch("https://springboot-issue-tracker.herokuapp.com/equips/delete", {
+  fetch("http://localhost:8080/equips/delete", {
     method: "delete",
     headers: {
       'Accept': 'application/json',
@@ -430,7 +425,7 @@ function updateIssue() {
     window.alert("Only Supervisor can provide feedback.Please log in as superviser")
   }
   else {
-    fetch("https://springboot-issue-tracker.herokuapp.com/issues/update", {
+    fetch("http://localhost:8080/issues/update", {
       method: "put",
       headers: {
         'Accept': 'application/json',
